@@ -2,8 +2,8 @@
 
 ## Viikkoraportit
 
-[Viikko 1](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti1.txt) 
+[Viikko 1](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti1.md) 
 
 ## Määrittelydokumentti
 
-[Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.txt)
+[Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.md)
