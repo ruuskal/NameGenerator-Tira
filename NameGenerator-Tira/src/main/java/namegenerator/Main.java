@@ -12,7 +12,9 @@ public class Main {
         trie.insert("amy");
         System.out.println("*****");
         
-        System.out.println(trie.firstDegreeMarkov());
+        Generator g = new Generator(trie);
+        
+        System.out.println(g.firstDegreeMarkov());
     }
     
 }

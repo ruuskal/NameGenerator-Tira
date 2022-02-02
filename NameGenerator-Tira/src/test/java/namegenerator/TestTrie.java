@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 public class TestTrie {
     private Trie trie;
+    private Generator g;
     
     public TestTrie() {
     }
@@ -17,6 +18,7 @@ public class TestTrie {
         this.trie = new Trie(256);
         this.trie.insert("ac");
         this.trie.insert("bbc");
+        this.g = new Generator(trie);
     }
     
     @Test
@@ -34,13 +36,13 @@ public class TestTrie {
     
     @Test
     public void mostPopularIndexIsMostPopular() {
-        assertEquals(98, this.trie.getMostPopularIndex(this.trie.getRoot()));
+        assertEquals(98, this.g.getMostPopularIndex(this.trie.getRoot()));
         this.trie.insert("dddd");
-        assertEquals(100, this.trie.getMostPopularIndex(this.trie.getRoot()));
+        assertEquals(100, this.g.getMostPopularIndex(this.trie.getRoot()));
     }
     
     @Test
     public void noNullPointerWhenLastLetterHasNoChildren() {
-        assertEquals("ac", trie.firstDegreeMarkov());
+        assertEquals("ac", g.firstDegreeMarkov());
     }
 }
