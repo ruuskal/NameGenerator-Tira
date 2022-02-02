@@ -28,34 +28,24 @@ public class Generator {
         return mostPopularIndex;
     }
     /**
-     * Right now, method selects first nonempty node, then the most popular one
-     * until node is flagged as last one or name is nine characters long. 
+     * Right now, method selects the most popular node
+     * until name is ten characters long or there are no node to continue to. 
+     * If two nodes are equaly popular, select the last one. Name can be only two chars
+     * long.
      * @return 
      */
     public String firstDegreeMarkov() {
         String suggestion = "";
+        TrieNode[] rootChildren = this.trie.getRoot().getChildren();
         TrieNode node = this.trie.getRoot();
-        TrieNode[] children = node.getChildren();
-        for (int i = 0; i < this.trie.getAlphabetSize(); i++) {
-            if (children[i] != null) {
-                suggestion = Character.toString((char) i);
-                node = children[i];
-                break;
-            }
-        }
         
         for (int j = 0; j < 10; j++) {
             int mostPopIndex = getMostPopularIndex(node);
             suggestion += Character.toString((char) mostPopIndex);
-            if (this.trie.getRoot().getChildren()[mostPopIndex] == null) {
+            if (rootChildren[mostPopIndex] == null) {
                 return suggestion;
             }
-            TrieNode nextNode = this.trie.getRoot().getChildren()[mostPopIndex];
-            int nextPopIndex = getMostPopularIndex(nextNode);
-            if (nextNode.getChildren()[nextPopIndex].getEnd()) {
-                suggestion  += Character.toString((char) nextPopIndex);
-                return suggestion;
-            }
+            TrieNode nextNode = rootChildren[mostPopIndex];
             node = nextNode;
         }
         

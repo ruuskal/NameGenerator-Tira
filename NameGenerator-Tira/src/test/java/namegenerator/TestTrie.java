@@ -43,6 +43,6 @@ public class TestTrie {
     
     @Test
     public void noNullPointerWhenLastLetterHasNoChildren() {
-        assertEquals("ac", g.firstDegreeMarkov());
+        assertEquals("bc", g.firstDegreeMarkov());
     }
 }

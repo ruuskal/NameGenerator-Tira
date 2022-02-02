@@ -9,8 +9,10 @@ public class Main {
         trie.insert("mira");
         trie.insert("mirkku");
         trie.insert("mirka");
-        trie.insert("amy");
+        trie.insert("kari");
+
         System.out.println("*****");
+        System.out.println(trie.search("mirkku"));
         
         Generator g = new Generator(trie);
         
