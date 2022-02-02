@@ -54,32 +54,34 @@ public class Generator {
     /**
      * Selects most popular node and it's most popular child, until there are no
      * more node to select or name is ten characters long.
+     * If two nodes are equally popular, select the last one. Name can be only two chars
+     * long.
      * @return String name
      */
-    public String secondDegreeMarkov() { // ei testejä vielä
+    public String secondDegreeMarkov() {
         String suggestion = "";
         int[] name = new int[12];
         TrieNode[] rootChildren = this.trie.getRoot().getChildren();
-        int firstPop = getMostPopularIndex(this.trie.getRoot());
-        TrieNode nodeOne = rootChildren[firstPop];
-        name[0] = firstPop;
+        name[0] = getMostPopularIndex(this.trie.getRoot());
+        TrieNode nodeOne = rootChildren[name[0]];
+        suggestion += Character.toString((char) name[0]);
         
-        int secondPop = getMostPopularIndex(nodeOne);
-        TrieNode nodeTwo = nodeOne.getChildren()[secondPop];
-        name[1] = secondPop;
+        name[1] = getMostPopularIndex(nodeOne);
+        TrieNode nodeTwo = nodeOne.getChildren()[name[1]];
+        suggestion += Character.toString((char) name[1]);
 
         for (int j = 0; j < 10; j++) {
-            int thirdPop = getMostPopularIndex(nodeTwo);
-            name[j + 2] = thirdPop;
-            nodeOne = rootChildren[secondPop];
-            nodeTwo = nodeOne.getChildren()[thirdPop];
-            secondPop = thirdPop;
-            if (rootChildren[secondPop] == null) {
+            if (rootChildren[name[j + 1]] == null) {
                 break;
             }
-        }
-        for (int i : name) {
-            suggestion += Character.toString((char) i);
+            int nextPopIndex = getMostPopularIndex(nodeTwo);
+            name[j + 2] = nextPopIndex;
+            nodeOne = rootChildren[name[j + 1]];
+            nodeTwo = nodeOne.getChildren()[nextPopIndex];
+            if (rootChildren[name[j + 2]] == null) {
+                break;
+            }
+            suggestion += Character.toString((char) nextPopIndex);
         }
         
         return suggestion;
