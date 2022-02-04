@@ -7,17 +7,12 @@ import static org.junit.Assert.*;
 
 public class TestTrie {
     private Trie trie;
-    private Generator generator;
-    
-    public TestTrie() {
-    }
     
     @Before
     public void setUp() {
         this.trie = new Trie(256);
         this.trie.insert("ac");
         this.trie.insert("bbc");
-        this.generator = new Generator(trie);
     }
     
     @Test

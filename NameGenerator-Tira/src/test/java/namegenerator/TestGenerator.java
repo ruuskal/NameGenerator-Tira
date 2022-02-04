@@ -55,4 +55,21 @@ public class TestGenerator {
         assertEquals("a", g.firstDegreeMarkov());
         assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
     }
+    
+    @Test
+    public void beginningForSecondDegreeWorkswithEmptyTrie() {
+        Trie t = new Trie(256);
+        Generator g = new Generator(t);
+        int[] empty = g.getBeginningForSecondDegree();
+        assertEquals(0, empty[0]);
+        assertEquals(0, empty[1]);
+    }
+    
+    @Test
+    public void beginningForSecondDegreeWorkswithNotEmptyTrie() {
+        int[] name = generator.getBeginningForSecondDegree();
+        assertEquals(98, name[0]);
+        assertEquals(99, name[1]);
+    }
+    
 }
