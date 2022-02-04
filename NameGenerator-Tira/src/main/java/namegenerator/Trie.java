@@ -19,16 +19,19 @@ public class Trie {
     
     /**
      * Inserts given word to the tree in all substrings, that
-     * are longer than one character.
+     * are longer than one character. Does not accept one char inputs.
      * 
-     * @param word  
+     * @param name  
      */
-    public void insert(String word) {
+    public void insert(String name) {
         TrieNode node = this.root;
+        if (name.length() < 2) {
+            return;
+        }
         
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < name.length(); i++) {
             TrieNode[] children = node.getChildren();
-            int index = word.charAt(i);
+            int index = name.charAt(i);
             if (children[index] == null) {
                 node = new TrieNode(this.alphabetSize);
                 children[index] = node;
@@ -38,9 +41,9 @@ public class Trie {
             }
         }
         node.setEnd();
-        word = word.substring(1);
-        if (word.length() > 1) {
-            insert(word);
+        name = name.substring(1);
+        if (name.length() > 1) {
+            insert(name);
         }       
     }
     /**

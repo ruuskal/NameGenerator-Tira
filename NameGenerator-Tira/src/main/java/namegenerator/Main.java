@@ -3,26 +3,27 @@ package namegenerator;
 public class Main {
 
     public static void main(String[] args) {
-        Trie trie = new Trie(256);
-  
-        trie.insert("mia");
-        trie.insert("mira");
-        trie.insert("mirkku");
-        trie.insert("mirka");
-        trie.insert("kari");
-        trie.insert("markkula");
-        trie.insert("lauri");
-        trie.insert("laura");
-        trie.insert("lauren");
-        trie.insert("urkki");
-        trie.insert("ac");
-        trie.insert("bbc");
-        trie.insert("bc");
-  
-        System.out.println("*****");
-        Generator g = new Generator(trie);
-        System.out.println(g.firstDegreeMarkov());
-        System.out.println(g.secondDegreeMarkov());
+        
+        Loader l = new Loader();
+        
+        Trie males = l.loadNames("/maleNames.txt");
+        Trie females = l.loadNames("/femaleNames.txt");
+        Trie lasts = l.loadNames("/lastnames.txt");
+        
+        
+        
+        Generator mg = new Generator(males);
+        Generator fg = new Generator(females);
+        Generator lg = new Generator(lasts);
+        
+        System.out.println(mg.firstDegreeMarkov());
+        System.out.println(mg.secondDegreeMarkov());
+        System.out.println("***");
+        System.out.println(fg.firstDegreeMarkov());
+        System.out.println(fg.secondDegreeMarkov());
+        System.out.println("***");
+        System.out.println(lg.firstDegreeMarkov());
+        System.out.println(lg.secondDegreeMarkov());
     }
     
 }
