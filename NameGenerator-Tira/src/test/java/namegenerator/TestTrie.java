@@ -19,8 +19,7 @@ public class TestTrie {
     public void insertsWholeWordAndItsSubstrings() {
         assertTrue(trie.search("ac"));
         assertTrue(trie.search("bbc"));
-        assertTrue(trie.search("bc"));
-       
+        assertTrue(trie.search("bc"));   
     }
     
     @Test

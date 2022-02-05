@@ -11,12 +11,11 @@ public class Loader {
         
         try { 
             
-        BufferedReader b = new BufferedReader(new InputStreamReader(
+            BufferedReader b = new BufferedReader(new InputStreamReader(
                   this.getClass().getResourceAsStream(file)));
 
-           b.lines().forEach(n -> trie.insert(n.toLowerCase()));
-        }
-        catch (Exception e) {
+            b.lines().forEach(n -> trie.insert(n.toLowerCase()));
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
         return trie;

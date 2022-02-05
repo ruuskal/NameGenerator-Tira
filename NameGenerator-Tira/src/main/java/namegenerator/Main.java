@@ -10,8 +10,6 @@ public class Main {
         Trie females = l.loadNames("/femaleNames.txt");
         Trie lasts = l.loadNames("/lastnames.txt");
         
-        
-        
         Generator mg = new Generator(males);
         Generator fg = new Generator(females);
         Generator lg = new Generator(lasts);

@@ -18,17 +18,16 @@ public class Trie {
     }
     
     /**
-     * Inserts given word to the tree in all substrings, that
-     * are longer than one character. Does not accept one char inputs.
+     * Inserts given word to the tree in all substrings, that are 4 to 2 
+     * characters long. Does not accept empty or one char inputs.
      * 
      * @param name  
      */
     public void insert(String name) {
-        TrieNode node = this.root;
         if (name.length() < 2) {
             return;
         }
-        
+        TrieNode node = this.root;
         for (int i = 0; i < name.length(); i++) {
             TrieNode[] children = node.getChildren();
             int index = name.charAt(i);
@@ -42,20 +41,18 @@ public class Trie {
         }
         node.setEnd();
         name = name.substring(1);
-        if (name.length() > 1) {
-            insert(name);
-        }       
+        insert(name);     
     }
     /**
     * Checks if given word is in the trie, finds also substrings of a word.
-    * @param word
+    * @param name
     * @return boolean
     */
-    public boolean search(String word) {
+    public boolean search(String name) {
         TrieNode node = this.root;
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < name.length(); i++) {
             TrieNode[] children = node.getChildren();
-            int index = word.charAt(i);
+            int index = name.charAt(i);
             if (children[index] == null) {
                 return false;
             } else {

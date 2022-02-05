@@ -40,19 +40,19 @@ public class TestGenerator {
     }
     
     @Test
-    public void generatingFromEmptyTrieWorks() {
+    public void generatingFromEmptyTrieDosentBreak() {
         Trie t = new Trie(256);
         Generator g = new Generator(t);
-        assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
         assertEquals("", g.firstDegreeMarkov());
+        assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
     }
     
     @Test
-    public void trieWithOneCharWorks() {
+    public void trieWithOneCharDosentBreak() {
         Trie t = new Trie(256);
         t.insert("a");
         Generator g = new Generator(t); 
-        assertEquals("a", g.firstDegreeMarkov());
+        assertEquals("", g.firstDegreeMarkov());
         assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
     }
     
