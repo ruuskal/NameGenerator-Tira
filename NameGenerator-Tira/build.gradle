@@ -18,6 +18,7 @@ jacocoTestReport {
     reports {
         xml.enabled = true
         html.enabled = true
+        html.destination file("build/jacocoHtml")
     }
 }
 
