@@ -21,3 +21,8 @@
 Komennon `gradle build` jälkeen testikattavuusraportti löytyy polusta
  */build/jacocoHtml/index.html* ja Checkstylen raportti polusta */build/reports/checkstyle/main.html*
 
+## Nimiaineisto
+
+Nimiaineisto on Digi- ja väestöviraston ylläpitämä rekisteri Suomessa 
+esiintyvistä nimistä, ja se on ladattu 3.2.2022  
+[Avoin data -palvelusta](https://www.avoindata.fi/data/fi/dataset/none).
