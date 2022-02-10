@@ -64,4 +64,24 @@ public class Trie {
         }
         return true;
     }
+    
+    /**
+     * Checks which of the nodes children has most passes
+     * @param node
+     * @return index of the most popular child
+     */
+    public int getMostPopularIndex(TrieNode node) {
+        int mostPasses = 0;
+        int mostPopularIndex = 0;    
+        TrieNode[] children = node.getChildren();
+        for (int i = 0; i < this.alphabetSize; i++) {
+            if (children[i] != null) {
+                if (children[i].getPasses() >= mostPasses) {
+                    mostPasses = children[i].getPasses();
+                    mostPopularIndex = i;
+                }
+            }
+        }
+        return mostPopularIndex;
+    }
 }

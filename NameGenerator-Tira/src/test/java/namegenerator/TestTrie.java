@@ -26,4 +26,11 @@ public class TestTrie {
     public void doesNotInsertMiddleOfWordAsWord() {
         assertFalse(trie.search("bb"));
     }
+    
+    @Test
+    public void mostPopularIndexIsMostPopular() {
+        assertEquals(98, trie.getMostPopularIndex(trie.getRoot()));
+        trie.insert("dddd");
+        assertEquals(100, trie.getMostPopularIndex(trie.getRoot()));
+    }
 }

@@ -10,25 +10,7 @@ public class Generator {
         this.rootChildren = this.trie.getRoot().getChildren();
     }
     
-    /**
-     * Checks which of the nodes children has most passes
-     * @param node
-     * @return index of the most popular child
-     */
-    public int getMostPopularIndex(TrieNode node) {
-        int mostPasses = 0;
-        int mostPopularIndex = 0;    
-        TrieNode[] children = node.getChildren();
-        for (int i = 0; i < this.trie.getAlphabetSize(); i++) {
-            if (children[i] != null) {
-                if (children[i].getPasses() >= mostPasses) {
-                    mostPasses = children[i].getPasses();
-                    mostPopularIndex = i;
-                }
-            }
-        }
-        return mostPopularIndex;
-    }
+
     /**
      * Right now, method selects the most popular node
      * until name is ten characters long or there are no node to continue to. 
@@ -40,7 +22,7 @@ public class Generator {
         TrieNode node = this.trie.getRoot();
         
         for (int j = 0; j < 10; j++) {
-            int mostPopIndex = getMostPopularIndex(node);
+            int mostPopIndex = this.trie.getMostPopularIndex(node);
             if (mostPopIndex != 0) { //ei laiteta tyhjää merkkiä nimiehdotukseen
                 suggestion += Character.toString((char) mostPopIndex);
             }
@@ -72,11 +54,11 @@ public class Generator {
         suggestion += Character.toString((char) name[1]);
 
         for (int j = 2; j < 10; j++) {
-            int nextPopIndex = getMostPopularIndex(nodeTwo); 
+            int nextPopIndex = this.trie.getMostPopularIndex(nodeTwo); 
             if (nextPopIndex == 0) {
                 return suggestion; //can be 0, let's not but empty values to suggestion
             }
-            if (getMostPopularIndex(rootChildren[name[j - 1]].getChildren()[nextPopIndex]) == 0) {
+            if (this.trie.getMostPopularIndex(rootChildren[name[j - 1]].getChildren()[nextPopIndex]) == 0) {
                 suggestion += Character.toString((char) nextPopIndex);
                 return suggestion; //in case of abc, we get also c in the name, not just ab
             }
@@ -96,15 +78,16 @@ public class Generator {
     
     public int[] getBeginningForSecondDegree() {
         int[] name = new int[10]; //max name lenght
-        name[0] = getMostPopularIndex(this.trie.getRoot());
+        name[0] = this.trie.getMostPopularIndex(this.trie.getRoot());
         if (name[0] == 0) {
             return name;
         }
         TrieNode nodeOne = rootChildren[name[0]];
-        name[1] = getMostPopularIndex(nodeOne);
+        name[1] = this.trie.getMostPopularIndex(nodeOne);
         if (name[1] == 0) {
             return name;
         }
         return name; 
     }
+    
 }

@@ -22,6 +22,7 @@ public class Main {
         System.out.println("***");
         System.out.println(lg.firstDegreeMarkov());
         System.out.println(lg.secondDegreeMarkov());
+        System.out.println("***");
     }
     
 }

@@ -20,13 +20,6 @@ public class TestGenerator {
     }
     
     @Test
-    public void mostPopularIndexIsMostPopular() {
-        assertEquals(98, generator.getMostPopularIndex(trie.getRoot()));
-        trie.insert("dddd");
-        assertEquals(100, generator.getMostPopularIndex(trie.getRoot()));
-    }
-    
-    @Test
     public void noNullPointerWhenLastLetterHasNoChildren() {
         assertEquals("bc", generator.firstDegreeMarkov());
         assertEquals("bc", generator.secondDegreeMarkov());
@@ -36,7 +29,7 @@ public class TestGenerator {
     public void secondDegreeReturnsAllEndingChars() {
         assertEquals("bc", generator.secondDegreeMarkov());
         trie.insert("bcfz");
-        assertEquals("bcfz", generator.secondDegreeMarkov()); 
+        assertEquals("bcfz", generator.secondDegreeMarkov());
     }
     
     @Test
