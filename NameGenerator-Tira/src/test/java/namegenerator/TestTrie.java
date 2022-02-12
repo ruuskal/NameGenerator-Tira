@@ -33,4 +33,10 @@ public class TestTrie {
         trie.insert("dddd");
         assertEquals(100, trie.getMostPopularIndex(trie.getRoot()));
     }
+    
+    @Test
+    public void mostPopularIndexIsNegativeWhenNoChildren() {
+        TrieNode node = trie.getRoot().getChildren()[100];
+        assertEquals(-1, trie.getMostPopularIndex(node));
+    }
 }
