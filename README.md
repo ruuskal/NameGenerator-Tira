@@ -1,5 +1,9 @@
 # NameGenerator-Tira
 
+NameGenerator on Tietorakenteet ja algoritmit -kurssin harjaoitussovellus. 
+Ohjelman on tarkoitus generoida valmiiksiannetusta nimi-aineistosta nimiä 
+Markovin ketjujen avulla. Sovellus on toteutettu Javalla ja Gradlella (4.4.1).
+
 ## Viikkoraportit
 
 [Viikko 1](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti1.md) 
@@ -9,6 +13,7 @@
 [Viikko 3](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti3.md)
 
 [Viikko 4](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti4.md)
+
 ## Määrittelydokumentti
 
 [Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.md)
@@ -16,6 +21,10 @@
 ## Testausdokumentti 
 
 [Testausdokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Testausdokumentti.md)
+
+## Toteutusraportti
+
+[Toteutusraportti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Toteutusraportti.md)
 
 ## JaCoCo ja Checkstyle
 
