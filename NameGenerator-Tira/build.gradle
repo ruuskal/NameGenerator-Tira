@@ -39,6 +39,10 @@ checkstyleTest {
     source ='src/test/java'
 }
 
+run {
+    standardInput = System.in
+}
+
 task checkstyle(type: Checkstyle) {
     configFile rootProject.file('checkstyle.xml')
     source 'src/main/java'
