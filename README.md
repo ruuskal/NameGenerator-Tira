@@ -8,6 +8,7 @@
 
 [Viikko 3](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti3.md)
 
+[Viikko 4](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti4.md)
 ## Määrittelydokumentti
 
 [Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.md)
