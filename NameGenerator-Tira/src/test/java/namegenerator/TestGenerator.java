@@ -21,23 +21,22 @@ public class TestGenerator {
     
     @Test
     public void noNullPointerWhenLastLetterHasNoChildren() {
-        assertEquals("bc", generator.firstDegreeMarkov());
-        assertEquals("bc", generator.secondDegreeMarkov());
+        assertEquals("bc", generator.generateName(1, 10));
+        assertEquals("bc", generator.generateName(2, 10));
     }
     
     @Test
     public void secondDegreeReturnsAllEndingChars() {
-        assertEquals("bc", generator.secondDegreeMarkov());
+        assertEquals("bc", generator.generateName(2, 10));
         trie.insert("bcfz");
-        assertEquals("bcfz", generator.secondDegreeMarkov());
+        assertEquals("bcfz", generator.generateName(2, 10));
     }
     
     @Test
     public void generatingFromEmptyTrieDosentBreak() {
         Trie t = new Trie(256);
         Generator g = new Generator(t);
-        assertEquals("", g.firstDegreeMarkov());
-        assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
+        assertEquals("", g.generateName(1, 10));
     }
     
     @Test
@@ -45,24 +44,7 @@ public class TestGenerator {
         Trie t = new Trie(256);
         t.insert("a");
         Generator g = new Generator(t); 
-        assertEquals("", g.firstDegreeMarkov());
-        assertEquals("Trie does not have long enough names.", g.secondDegreeMarkov());
-    }
-    
-    @Test
-    public void beginningForSecondDegreeWorkswithEmptyTrie() {
-        Trie t = new Trie(256);
-        Generator g = new Generator(t);
-        int[] empty = g.getBeginningForSecondDegree();
-        assertEquals(0, empty[0]);
-        assertEquals(0, empty[1]);
-    }
-    
-    @Test
-    public void beginningForSecondDegreeWorkswithNotEmptyTrie() {
-        int[] name = generator.getBeginningForSecondDegree();
-        assertEquals(98, name[0]);
-        assertEquals(99, name[1]);
-    }
-    
+        assertEquals("", g.generateName(1, 10));
+        assertEquals("", g.generateName(5, 10));
+    }    
 }

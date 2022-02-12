@@ -13,16 +13,12 @@ public class Main {
         Generator mg = new Generator(males);
         Generator fg = new Generator(females);
         Generator lg = new Generator(lasts);
-        
-        System.out.println(mg.firstDegreeMarkov());
-        System.out.println(mg.secondDegreeMarkov());
+   
         System.out.println("***");
-        System.out.println(fg.firstDegreeMarkov());
-        System.out.println(fg.secondDegreeMarkov());
-        System.out.println("***");
-        System.out.println(lg.firstDegreeMarkov());
-        System.out.println(lg.secondDegreeMarkov());
-        System.out.println("***");
+        System.out.println(lg.generateName(100000, 10));
+        System.out.println(lg.generateName(3, 18));
+        System.out.println(lg.generateName(1, 10));
+
     }
     
 }

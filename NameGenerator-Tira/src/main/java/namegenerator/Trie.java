@@ -72,15 +72,19 @@ public class Trie {
      */
     public int getMostPopularIndex(TrieNode node) {
         int mostPasses = 0;
-        int mostPopularIndex = 0;    
-        TrieNode[] children = node.getChildren();
-        for (int i = 0; i < this.alphabetSize; i++) {
-            if (children[i] != null) {
-                if (children[i].getPasses() >= mostPasses) {
-                    mostPasses = children[i].getPasses();
-                    mostPopularIndex = i;
-                }
+        int mostPopularIndex = 0;
+        try {
+            TrieNode[] children = node.getChildren();
+            for (int i = 0; i < this.alphabetSize; i++) {
+                if (children[i] != null) {
+                    if (children[i].getPasses() >= mostPasses) {
+                        mostPasses = children[i].getPasses();
+                        mostPopularIndex = i;
+                    }
+                }   
             }
+        } catch (Exception e) {
+            return -1;
         }
         return mostPopularIndex;
     }
