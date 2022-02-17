@@ -39,4 +39,19 @@ public class TestTrie {
         TrieNode node = trie.getRoot().getChildren()[100];
         assertEquals(-1, trie.getMostPopularIndex(node));
     }
+    
+    @Test
+    public void findNodeWithChildrenReturnsNegativeWhenNoChildren() {
+        TrieNode node = trie.getRoot().getChildren()[97].getChildren()[99];
+        assertEquals(-1, trie.getNodeWithChildren(node));
+    }
+    
+    @Test
+    public void findTrieWithChildrenReturnsTrieWithChildren() {
+        Trie t = new Trie(256);
+        t.insert("bbc");
+        t.insert("bbaa");
+        TrieNode node = t.getRoot().getChildren()[98].getChildren()[98];
+        assertEquals(97, t.getNodeWithChildren(node));
+    }
 }
