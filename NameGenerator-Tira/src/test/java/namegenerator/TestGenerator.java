@@ -75,4 +75,14 @@ public class TestGenerator {
         assertEquals("Bad parameters", generator.generateName(1, 30));
         assertEquals("Bad parameters", generator.generateName(1, 0));
     }
+    
+    @Test
+    public void constructNameWorks() {
+        int[] t = new int[26];
+        t[0] = 97;
+        t[1] = 98;
+        t[3] = 0;
+        t[4] = 99;
+        assertEquals("ab", generator.constructName(t));
+    }
 }

@@ -7,46 +7,58 @@ public class Generator {
     public Generator(Trie trie) {
         this.trie = trie;
     }
-   
+    
+    /** Turns array of ints into their corresponding unicode String values.
+     * 
+     * @param history int array (unicode values)
+     * @return String name
+     */
+    public String constructName(int[] history) {
+        String name = "";
+        for (int i = 0; i < history.length; i++) {
+            if (history[i] == 0) {
+                return name;
+            }
+            name += Character.toString((char) history[i]);
+        }
+        return name;
+    }
+    
     /** Generates name from trie using k-degree Markov chain.
      * 
      * @param k degree of Markov chain, must be positive
      * @param n max length of name, between 1 and 25
      * @return generated name as String
      */
-    
     public String generateName(int k, int n) {
         if (k < 0 || n <= 0 || n > 25) {
             return "Bad parameters";
         }
-        String suggestion = "";
-        int[] history = new int[k + 1];
+        int[] history = new int[26];
         TrieNode node = this.trie.getRoot();
+        int knownLetters = 0;
+        int firstInBranch = 0;
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < k; j++) {
-                if (history[j] == 0) {
-                    break;
-                } else {
+            if (knownLetters != 0) { //if not first looping...
+                if (i - k > 0) {  //if we already have enough letter for one branch
+                    firstInBranch = i - k;
+                } 
+                for (int j = firstInBranch; j < knownLetters; j++) { //crawl to right place
                     node = node.getChildren()[history[j]];
                 }
             }
             int newIndex = this.trie.getMostPopularIndex(node);
-            if (newIndex == 0 || newIndex == -1) {
-                break;
-            }
-            suggestion += Character.toString((char) newIndex);
-            if (i >= k) {
-                history[k] = newIndex;
-                for (int j = 0; j < k; j++) {
-                    history[j] = history[j + 1];
+            if (newIndex <= 0) {
+                newIndex = trie.getNodeWithChildren(node);
+                if (newIndex <= 0) {
+                    break; //node has no children, give up
                 }
-            } else {
-                history[i] = newIndex;
             }
+            history[knownLetters] = newIndex;
+            knownLetters++;
             node = this.trie.getRoot();
         }
-   
-        return suggestion;
+        return constructName(history);
     }
 }
