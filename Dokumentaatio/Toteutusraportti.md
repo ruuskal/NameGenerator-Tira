@@ -1,18 +1,24 @@
 # Toteutusraportti
 
 Ohjelma koostuu trie-tietorakenteesta, lukijasta, generaattorista ja käyttöliittymästä.
-Lukija tallentaa 
+
+Lukija, eli `Loader`-olio, tallentaa 
 tekstitedoston sisältämät sanat trie-rakenteeseen. Käyttöliittymän avulla 
 käyttäjä voi määritellä minkälaisia nimiä haluaa generoida
- generaattorin avulla. Ohjelma toimii komentoriviltä. 
+ generaattorin avulla. Muuttuvia parametrejä ovat Markovin ketjun aste,
+ nimen maksimipituus ja ensimmäinen kirjain. Ohjelma toimii komentoriviltä. 
+
+## Suorituskyky- ja O-analyysivertailut
 
 Myöhemmin tähän dokumenttiin tullaan lisäämään tarkempi kuvaus ohjelman rakenteesta
  sekä aika- ja tilavaativuudet. 
 
 Ohjelman toteutus on vielä kesken, sitä on tarkoitus parannella lähinnä nimien 
-generoinnin osalta siten, että nimimen lopettaminen tapahtuu säänntöjen mukaan 
-ja nimien aloituksessa voidaan käyttää jonkinlaista satunnaisuutta siten, ettei 
-joka kerralla päädytä muodostamaan yleisimmällä tavalla alkavaa nimeä. 
+generoinnin osalta siten, että nimimen lopettaminen tapahtuu säänntöjen mukaan. 
+
+## Parannusehdotuksia
+
+
 
 ## Lähteet
 
