@@ -118,4 +118,24 @@ public class Trie {
             return -1;
         }
     }
+    
+    public int getIdxForEnding(TrieNode node) {
+        int idx = -1;
+        try {
+            TrieNode[] children = node.getChildren();
+            for (int i = 0; i < this.alphabetSize; i++) {
+                if (children[i] != null) { 
+                    if (children[i].getEnd() == true) {
+                        idx = i;
+                        return i;
+                    }
+                }   
+            }
+            return idx;
+        } catch (Exception e) {
+            System.out.println("Virhe: " + e);
+            return -1;
+        }
+    }
+    
 }

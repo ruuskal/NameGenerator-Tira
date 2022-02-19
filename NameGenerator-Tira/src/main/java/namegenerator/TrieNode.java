@@ -29,7 +29,5 @@ public class TrieNode {
     
     public void increasePasses() {
         this.passes++;
-    }
-    
-    
+    }  
 }
