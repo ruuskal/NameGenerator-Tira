@@ -118,7 +118,12 @@ public class Trie {
             return -1;
         }
     }
-    
+    /** Finds nodes child, that is marked as ending node. Returns the first 
+     * index with such child, or -1 if there is no ending nodes as child
+     * 
+     * @param node
+     * @return index of endnode or -1
+     */
     public int getIdxForEnding(TrieNode node) {
         int idx = -1;
         try {

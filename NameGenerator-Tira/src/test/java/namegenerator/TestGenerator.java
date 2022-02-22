@@ -85,4 +85,5 @@ public class TestGenerator {
         t[4] = 99;
         assertEquals("ab", generator.constructName(t));
     }
+  
 }

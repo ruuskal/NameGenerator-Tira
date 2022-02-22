@@ -54,4 +54,5 @@ public class TestTrie {
         TrieNode node = t.getRoot().getChildren()[98].getChildren()[98];
         assertEquals(97, t.getNodeWithChildren(node));
     }
+    
 }
