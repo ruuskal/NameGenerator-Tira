@@ -88,7 +88,7 @@ public class Generator {
         int[] history = new int[n];
         int firstLetter = letter.charAt(0);
         if (trie.getRoot().getChildren()[firstLetter] == null) {
-            return "Tilastossa ei ole " + letter + "-kirjaimella alkavaa nimeä.";
+            return "No names starting with " + letter + ".";
         }
         history[0] = firstLetter;
         TrieNode node = this.trie.getRoot();
@@ -116,7 +116,7 @@ public class Generator {
     }
     
     /** TESTIT PUUTTUVAT, NÄYTTÄISI TOIMIVAN. Generates name from trie using 
-     * k-degree Markov chain and given first letter. Check's that last letter
+     * k-degree Markov chain and given first letter. Checks that last letter
      * is marked as last node in trie. If it is not, it tries the previous 
      * node.
      * @param k
@@ -132,7 +132,7 @@ public class Generator {
         int firstLetter = letter.charAt(0);
 
         if (trie.getRoot().getChildren()[firstLetter] == null) {
-            return "Tilastossa ei ole " + letter + "-kirjaimella alkavaa nimeä.";
+            return "No names starting with " + letter + ".";
         }
         TrieNode node = this.trie.getRoot();
         int knownLetters = 1;
@@ -162,7 +162,7 @@ public class Generator {
                 } else {
                     newIndex = trie.getIdxForEnding(node);
                     if (newIndex <= 0) {
-              System.out.println(Arrays.deepToString(history));
+            //  System.out.println(Arrays.deepToString(history));
                         for (int x = knownLetters - 1; x >= 0; x--) {
                             if (history[x][1] > 0) {
                                 history[x][0] = history[x][1];
