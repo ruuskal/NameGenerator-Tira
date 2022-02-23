@@ -2,7 +2,6 @@ package namegenerator;
 
 import java.util.Arrays;
 
-
 public class Generator {
     private Trie trie;
     
@@ -49,17 +48,13 @@ public class Generator {
         }
         int[] history = new int[n + 1];
         TrieNode node = this.trie.getRoot();
-        int knownLetters = 0;
         int firstInBranch = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (knownLetters != 0) { //if not first looping...
-                if (i - k > 0) {  //if we already have enough letter for one branch
-                    firstInBranch = i - k;
-                } 
-                for (int j = firstInBranch; j < knownLetters; j++) { //crawl to right place
-                    node = node.getChildren()[history[j]];
-                }
+        for (int knownLetters = 0; knownLetters < n; knownLetters++) {
+            if (knownLetters - k > 0) {  //if we already have enough letters for one branch
+                firstInBranch = knownLetters - k;
+            } 
+            for (int j = firstInBranch; j < knownLetters; j++) { //crawl to right place
+                node = node.getChildren()[history[j]];
             }
             int newIndex = this.trie.getMostPopularIndex(node);
             if (newIndex <= 0) {
@@ -69,7 +64,6 @@ public class Generator {
                 }
             }
             history[knownLetters] = newIndex;
-            knownLetters++;
             node = this.trie.getRoot();
         }
         return constructName(history);
@@ -79,6 +73,7 @@ public class Generator {
      * letter.
      * @param k degree of Markov chain, must be positive
      * @param n max length of name, between 1 and 25
+     * @param letter first letter for name
      * @return generated name as String
      */
     public String generateNameWithFirstLetter(int k, int n, String letter) {
@@ -135,14 +130,13 @@ public class Generator {
             return "No names starting with " + letter + ".";
         }
         TrieNode node = this.trie.getRoot();
-        int knownLetters = 1;
         history[0][0] = firstLetter;
         history[0][1] = trie.getIdxForEnding(trie.getRoot().getChildren()[firstLetter]);
         int firstInBranch = 0;
 
-        for (int i = 1; i < n; i++) {
-            if (i - k > 0) {
-                firstInBranch = i - k;
+        for (int knownLetters = 1; knownLetters < n; knownLetters++) {
+            if (knownLetters - k > 0) {
+                firstInBranch = knownLetters - k;
             } 
             for (int j = firstInBranch; j < knownLetters; j++) { //crawl to right place
                 node = node.getChildren()[history[j][0]];
@@ -155,7 +149,7 @@ public class Generator {
                     break; //node has no children, give up
                 }
             }
-            if (i == n - 1) { // last round
+            if (knownLetters == n - 1) { // last round
                 if (node.getChildren()[newIndex].getEnd() == true) { //ending ok, best result
                     history[knownLetters][0] = newIndex;
                     break;
@@ -177,7 +171,6 @@ public class Generator {
             history[knownLetters][0] = newIndex;
             int endingIdx  = trie.getIdxForEnding(node);
             history[knownLetters][1] = endingIdx;
-            knownLetters++;
             node = this.trie.getRoot();
         }
         return constructNameDoubleInt(history);
