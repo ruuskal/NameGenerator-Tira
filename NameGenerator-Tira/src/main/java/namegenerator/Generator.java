@@ -68,58 +68,19 @@ public class Generator {
         }
         return constructName(history);
     }
+ 
     
-    /** Generates name from trie using k-degree Markov chain and given first 
-     * letter.
-     * @param k degree of Markov chain, must be positive
-     * @param n max length of name, between 1 and 25
-     * @param letter first letter for name
-     * @return generated name as String
-     */
-    public String generateNameWithFirstLetter(int k, int n, String letter) {
-        if (k < 0 || n <= 0 || n > 25) {
-            return "Bad parameters";
-        }
-        int[] history = new int[n];
-        int firstLetter = letter.charAt(0);
-        if (trie.getRoot().getChildren()[firstLetter] == null) {
-            return "No names starting with " + letter + ".";
-        }
-        history[0] = firstLetter;
-        TrieNode node = this.trie.getRoot();
-        int firstInBranch = 0;
-
-        for (int knownLetters = 1; knownLetters < n; knownLetters++) {
-            if (knownLetters - k > 0) {
-                firstInBranch = knownLetters - k;
-            } 
-            for (int j = firstInBranch; j < knownLetters; j++) { //crawl to right place
-                node = node.getChildren()[history[j]];
-            }
-            
-            int newIndex = this.trie.getMostPopularIndex(node);
-            if (newIndex <= 0) {
-                newIndex = trie.getNodeWithChildren(node);
-                if (newIndex <= 0) {
-                    break; //node has no children, give up
-                }
-            }
-            history[knownLetters] = newIndex;
-            node = this.trie.getRoot();
-        }
-        return constructName(history);
-    }
-    
-    /** TESTIT PUUTTUVAT, NÄYTTÄISI TOIMIVAN. Generates name from trie using 
+    /** Generates name from trie using 
      * k-degree Markov chain and given first letter. Checks that last letter
      * is marked as last node in trie. If it is not, it tries the previous 
      * node.
-     * @param k
-     * @param n
-     * @param letter
+     * @param k degree for Markov chain
+     * @param n max length for name
+     * @param letter first letter for name
+     * @param ending true, if user want's to implement good ending 
      * @return 
      */
-    public String generateNaeWithGoodEnding(int k, int n, String letter) {
+    public String generateNameWithLetter(int k, int n, String letter, boolean ending) {
         if (k < 0 || n <= 0 || n > 25) {
             return "Bad parameters";
         }
@@ -149,7 +110,7 @@ public class Generator {
                     break; //node has no children, give up
                 }
             }
-            if (knownLetters == n - 1) { // last round
+            if (knownLetters == n - 1 && ending == true) { // last round
                 if (node.getChildren()[newIndex].getEnd() == true) { //ending ok, best result
                     history[knownLetters][0] = newIndex;
                     break;

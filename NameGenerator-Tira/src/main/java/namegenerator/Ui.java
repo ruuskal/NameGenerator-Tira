@@ -1,17 +1,18 @@
 package namegenerator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 public class Ui {
     
     public void start(Scanner s) {
-    
         Loader l = new Loader();
         
-        Trie males = l.loadNames("/maleNames.txt");
-        Trie females = l.loadNames("/femaleNames.txt");
         Trie lasts = l.loadNames("/lastnames.txt");
+        Trie females = l.loadNames("/femaleNames.txt");
+        Trie males = l.loadNames("/maleNames.txt");
         
         Generator mg = new Generator(males);
         Generator fg = new Generator(females);
@@ -44,18 +45,18 @@ public class Ui {
                 
                 System.out.println("*****FEMALE*****");
                 System.out.println("Without first letter: " + fg.generateName(k, n));
-                System.out.println("With first letter: " + fg.generateNameWithFirstLetter(k, n, letter));
-                System.out.println("With good ending: " + fg.generateNaeWithGoodEnding(k, n, letter));
+                System.out.println("With first letter: " + fg.generateNameWithLetter(k, n, letter, false));
+                System.out.println("With good ending: " + fg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n");
                 System.out.println("*****MALE*****");
                 System.out.println("Without first letter: " + mg.generateName(k, n));
-                System.out.println("With first letter: " + mg.generateNameWithFirstLetter(k, n, letter));
-                System.out.println("With good ending: " + mg.generateNaeWithGoodEnding(k, n, letter));
+                System.out.println("With first letter: " + mg.generateNameWithLetter(k, n, letter, false));
+                System.out.println("With good ending: " + mg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n");
                 System.out.println("*****LASTNAME*****");
                 System.out.println("Without first letter: " + lg.generateName(k, n));
-                System.out.println("With first letter: " + lg.generateNameWithFirstLetter(k, n, letter));
-                System.out.println("With good ending: " + lg.generateNaeWithGoodEnding(k, n, letter));
+                System.out.println("With first letter: " + lg.generateNameWithLetter(k, n, letter, false));
+                System.out.println("With good ending: " + lg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n*****AGAIN?*****");
             
             } catch (Exception e) {

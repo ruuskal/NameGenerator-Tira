@@ -19,26 +19,26 @@ public class TestGeneratorWithFirstLetterAndEnding {
     
     @Test
     public void selectsCorrectFirstLetter() {
-        assertEquals("seppo", g.generateNameWithFirstLetter(3, 5, "s"));
-        assertEquals("teppo", g.generateNameWithFirstLetter(3, 5, "t"));
+        assertEquals("seppo", g.generateNameWithLetter(3, 5, "s", false));
+        assertEquals("teppo", g.generateNameWithLetter(3, 5, "t", false));
     }
     
     @Test
     public void noNameReturnedWhenNoSuchFirtLetter() {
-        assertEquals("No names starting with o.", g.generateNameWithFirstLetter(3, 5, "o"));
+        assertEquals("No names starting with o.", g.generateNameWithLetter(3, 5, "o", false));
     }
     
     @Test
     public void returnsNothingWhenNoEndingAvailable() {
-        assertEquals("", g.generateNaeWithGoodEnding(3, 4, "s"));
+        assertEquals("", g.generateNameWithLetter(3, 4, "s", true));
     }
     
     @Test
     public void returnsCorrectEnding() {
         t.insert("sep");
-        assertEquals("sep", g.generateNaeWithGoodEnding(4, 4, "s"));
+        assertEquals("sep", g.generateNameWithLetter(4, 4, "s", true));
         t.insert("sepp");
-        assertEquals("sepp", g.generateNaeWithGoodEnding(4, 4, "s"));
+        assertEquals("sepp", g.generateNameWithLetter(4, 4, "s", true));
     }
     
    
