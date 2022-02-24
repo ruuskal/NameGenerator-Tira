@@ -40,6 +40,7 @@ public class TestGeneratorWithFirstLetterAndEnding {
         t.insert("sepp");
         assertEquals("sepp", g.generateNameWithLetter(4, 4, "s", true));
     }
+   
     
    
 }

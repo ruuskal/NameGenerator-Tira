@@ -36,7 +36,8 @@ public class Generator {
         return name;
     }
     
-    /** Generates name from trie using k-degree Markov chain.
+    /** TÄMÄ ON TARKOITUS POISTAA 
+     * Generates name from trie using k-degree Markov chain.
      * 
      * @param k degree of Markov chain, must be positive
      * @param n max length of name, between 1 and 25
@@ -76,7 +77,7 @@ public class Generator {
      * node.
      * @param k degree for Markov chain
      * @param n max length for name
-     * @param letter first letter for name
+     * @param letter first letter for name, if unicode less than 97, start with most popular one 
      * @param ending true, if user want's to implement good ending 
      * @return 
      */
@@ -86,7 +87,10 @@ public class Generator {
         }
         int[][] history = new int[n][2];
         int firstLetter = letter.charAt(0);
-
+        
+        if (firstLetter < 97) {
+            firstLetter = trie.getMostPopularIndex(trie.getRoot());
+        } 
         if (trie.getRoot().getChildren()[firstLetter] == null) {
             return "No names starting with " + letter + ".";
         }
@@ -104,36 +108,38 @@ public class Generator {
             }
             
             int newIndex = this.trie.getMostPopularIndex(node);
-            if (newIndex <= 0) {
-                newIndex = trie.getNodeWithChildren(node);
-                if (newIndex <= 0) {
-                    break; //node has no children, give up
-                }
+            if (newIndex <= 0) { 
+                break; //node has no children, give up   
             }
             if (knownLetters == n - 1 && ending == true) { // last round
                 if (node.getChildren()[newIndex].getEnd() == true) { //ending ok, best result
                     history[knownLetters][0] = newIndex;
                     break;
                 } else {
-                    newIndex = trie.getIdxForEnding(node);
-                    if (newIndex <= 0) {
-            //  System.out.println(Arrays.deepToString(history));
-                        for (int x = knownLetters - 1; x >= 0; x--) {
-                            if (history[x][1] > 0) {
-                                history[x][0] = history[x][1];
-                                break;
-                            }
-                            history[x][0] = 0;
-                        }
-                        break;
-                    }
+                    history = changeHistory(history, knownLetters);
+                    break;
                 }
             }
             history[knownLetters][0] = newIndex;
             int endingIdx  = trie.getIdxForEnding(node);
             history[knownLetters][1] = endingIdx;
             node = this.trie.getRoot();
+            
         }
         return constructNameDoubleInt(history);
+    }
+    
+    public int[][] changeHistory(int[][] history, int knownLetters) {
+
+    //System.out.println(Arrays.deepToString(history));
+       
+        for (int x = knownLetters - 1; x >= 0; x--) {
+            if (history[x][1] > 0) {
+                history[x][0] = history[x][1];
+                break;
+            }
+            history[x][0] = 0;
+        }
+        return history;
     }
 }

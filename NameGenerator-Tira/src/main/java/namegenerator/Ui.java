@@ -45,16 +45,19 @@ public class Ui {
                 
                 System.out.println("*****FEMALE*****");
                 System.out.println("Without first letter: " + fg.generateName(k, n));
+                System.out.println("Should be same as above: " + fg.generateNameWithLetter(k, n,  ".", false));
                 System.out.println("With first letter: " + fg.generateNameWithLetter(k, n, letter, false));
                 System.out.println("With good ending: " + fg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n");
                 System.out.println("*****MALE*****");
                 System.out.println("Without first letter: " + mg.generateName(k, n));
+                System.out.println("Should be same as above: " + mg.generateNameWithLetter(k, n,  ".", false));
                 System.out.println("With first letter: " + mg.generateNameWithLetter(k, n, letter, false));
                 System.out.println("With good ending: " + mg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n");
                 System.out.println("*****LASTNAME*****");
                 System.out.println("Without first letter: " + lg.generateName(k, n));
+                System.out.println("Should be same as above: " + lg.generateNameWithLetter(k, n, ".", false));
                 System.out.println("With first letter: " + lg.generateNameWithLetter(k, n, letter, false));
                 System.out.println("With good ending: " + lg.generateNameWithLetter(k, n, letter, true));
                 System.out.println("\n*****AGAIN?*****");
