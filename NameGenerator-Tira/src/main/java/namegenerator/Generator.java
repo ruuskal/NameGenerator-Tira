@@ -59,10 +59,10 @@ public class Generator {
             }
             int newIndex = this.trie.getMostPopularIndex(node);
             if (newIndex <= 0) {
-                newIndex = trie.getNodeWithChildren(node);
-                if (newIndex <= 0) {
-                    break; //node has no children, give up
-                }
+//                newIndex = trie.getNodeWithChildren(node);
+//                if (newIndex <= 0) {
+                break; //node has no children, give up
+              //  }
             }
             history[knownLetters] = newIndex;
             node = this.trie.getRoot();
@@ -86,17 +86,17 @@ public class Generator {
             return "Bad parameters";
         }
         int[][] history = new int[n][2];
-        int firstLetter = letter.charAt(0);
+        int letterCode = letter.charAt(0);
         
-        if (firstLetter < 97) {
-            firstLetter = trie.getMostPopularIndex(trie.getRoot());
+        if (letterCode < 97) {
+            letterCode = trie.getMostPopularIndex(trie.getRoot());
         } 
-        if (trie.getRoot().getChildren()[firstLetter] == null) {
+        if (trie.getRoot().getChildren()[letterCode] == null) {
             return "No names starting with " + letter + ".";
         }
         TrieNode node = this.trie.getRoot();
-        history[0][0] = firstLetter;
-        history[0][1] = trie.getIdxForEnding(trie.getRoot().getChildren()[firstLetter]);
+        history[0][0] = letterCode;
+        history[0][1] = trie.getIdxForEnding(trie.getRoot(), letterCode);
         int firstInBranch = 0;
 
         for (int knownLetters = 1; knownLetters < n; knownLetters++) {
@@ -121,7 +121,7 @@ public class Generator {
                 }
             }
             history[knownLetters][0] = newIndex;
-            int endingIdx  = trie.getIdxForEnding(node);
+            int endingIdx  = trie.getIdxForEnding(node, newIndex);
             history[knownLetters][1] = endingIdx;
             node = this.trie.getRoot();
             
@@ -131,7 +131,7 @@ public class Generator {
     
     public int[][] changeHistory(int[][] history, int knownLetters) {
 
-    //System.out.println(Arrays.deepToString(history));
+  //  System.out.println(Arrays.deepToString(history));
        
         for (int x = knownLetters - 1; x >= 0; x--) {
             if (history[x][1] > 0) {

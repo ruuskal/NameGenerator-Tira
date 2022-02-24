@@ -121,10 +121,14 @@ public class Trie {
     /** Finds nodes child, that is marked as ending node. Returns the first 
      * index with such child, or -1 if there is no ending nodes as child
      * 
-     * @param node
+     * @param node parent node
+     * @param popular most popular child node
      * @return index of endnode or -1
      */
-    public int getIdxForEnding(TrieNode node) {
+    public int getIdxForEnding(TrieNode node, int popular) {
+        if (node.getChildren()[popular].getEnd() == true) {
+            return popular;
+        }
         int idx = -1;
         try {
             TrieNode[] children = node.getChildren();
