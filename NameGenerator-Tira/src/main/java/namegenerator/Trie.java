@@ -96,28 +96,6 @@ public class Trie {
         return mostPopularIndex;
     }
     
-    /**Tires to find child with at least one child.
-     * 
-     * @param node
-     * @return index for the node with child
-     */
-    public int getNodeWithChildren(TrieNode node) {
-        int idx = -1;
-        try {
-            TrieNode[] children = node.getChildren();
-            for (int i = 0; i < this.alphabetSize; i++) {
-                if (children[i] != null) { 
-                    if (children[i].getChildren() != null) {
-                        return i;
-                    }
-                }   
-            }
-            return idx;
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-            return -1;
-        }
-    }
     /** Finds nodes child, that is marked as ending node. Returns the first 
      * index with such child, or -1 if there is no ending nodes as child
      * 

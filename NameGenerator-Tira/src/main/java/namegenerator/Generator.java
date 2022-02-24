@@ -14,7 +14,7 @@ public class Generator {
      * @param k degree for Markov chain
      * @param n max length for name
      * @param letter first letter for name, if unicode less than 97, start with most popular one 
-     * @param ending true if name should end with legitimate node 
+     * @param ending should name end with legitimate node 
      * @return String name
      */
     public String generateName(int k, int n, String letter, boolean ending) {
@@ -35,7 +35,7 @@ public class Generator {
         
         history[0][0] = letterCode;
         history[0][1] = trie.getIdxForEnding(trie.getRoot(), letterCode);
-        
+      //  System.out.println(Arrays.deepToString(history));
         int[][] name = generateHistory(history, k, n, ending);
         return constructName(name);
     }
@@ -48,7 +48,7 @@ public class Generator {
      * @param history int[][] with nonempty first row
      * @param k degree of Markov chain, depth of one branch
      * @param n max length for name
-     * @param ending true if name should end with legitimate node
+     * @param ending should name end with legitimate node
      * @return int[][] of history
      */
     public int[][] generateHistory(int[][] history, int k, int n, boolean ending) {
@@ -71,7 +71,7 @@ public class Generator {
                 if (node.getChildren()[newIndex].getEnd() == true) { //ending ok, best result
                     history[knownLetters][0] = newIndex;
                     break;
-                } else {
+                } else if (ending == true) {
                     history = changeHistory(history, knownLetters);
                     break;
                 }
@@ -87,9 +87,6 @@ public class Generator {
     
     
     public int[][] changeHistory(int[][] history, int knownLetters) {
-
-  //  System.out.println(Arrays.deepToString(history));
-       
         for (int x = knownLetters - 1; x >= 0; x--) {
             if (history[x][1] > 0) {
                 history[x][0] = history[x][1];
@@ -103,7 +100,7 @@ public class Generator {
     
     /** Turns array of ints into their corresponding unicode String values.
      * 
-     * @param history int array (unicode values)
+     * @param history unicode values for name
      * @return String name
      */
     public String constructName(int[][] history) {
