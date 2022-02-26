@@ -19,7 +19,7 @@ Aloitin suorituskykytestauksen. Tein silmukan, jossa joka kierroksella arvotaan 
 ensimmäisellä kierroksella nopeus oli luokkaa 26ms ja lopuilla 0.20ms. Kuulostaako tällainen uskottavalta?)
  
 
-`for (int i=0; i<100; i++) {
+`{for (int i=0; i<100; i++) 
             int r = (int) ((Math.random() * (122 - 97)) + 97);
             String letter = Character.toString((char) r);
             Long start = System.nanoTime();
