@@ -31,3 +31,11 @@ nimen generoiva metodi palauttaa niin pitkän merkkijonon, kuin se löytää.
  niin generointimetodi palauttaa tyhjän merkkijonon.
 
 ![raportti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/jacocoreport.pdf)
+
+## Suorituskykytestaus
+
+Tiedosto lastnames tallentaminen puuhun kymmenen kertaa antoi tulokseksi: 
+(169+170+164+177+166+192+165+159+158+160)/10 = 168 ms.
+Nimen luomisessa kesti noin 25-40 millisekuntia riippumatta ketjun asteesta
+ tai muista parametreistä. 
+
