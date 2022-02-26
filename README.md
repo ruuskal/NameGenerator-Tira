@@ -16,6 +16,9 @@ Markovin ketjujen avulla. Sovellus on toteutettu Javalla ja Gradlella (4.4.1).
 
 [Viikko 5](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti5.md)
 
+[Viikko 6](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti6.md)
+
+
 ## Määrittelydokumentti
 
 [Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.md)
