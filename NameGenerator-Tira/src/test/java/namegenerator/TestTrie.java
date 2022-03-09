@@ -54,6 +54,7 @@ public class TestTrie {
         TrieNode node = t.getRoot().getChildren()[97].getChildren()[110];   //a-n
         assertEquals(-1, t.getIdxForEnding(node, 116)); //t 
     }
+  
    
     
 }

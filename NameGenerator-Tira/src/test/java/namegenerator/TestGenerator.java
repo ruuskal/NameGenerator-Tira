@@ -22,25 +22,25 @@ public class TestGenerator {
     
     @Test
     public void generateHistoryReturnsNothingWhenNoEndingAvailable() {
-        int[][] answer = generator.generateHistory(history, 3, 4, true);
+        int[][] answer = trie.generateHistory(history, 3, 4, true);
         assertEquals(0, answer[0][0]);
     }
     
     @Test
     public void generateHistoryIgnoresEndingWhenNeeded() {
-        int[][] answer = generator.generateHistory(history, 1, 3, false);
+        int[][] answer = trie.generateHistory(history, 1, 3, false);
         assertEquals(115, answer[0][0]);    //s
         assertEquals(101, answer[1][0]);    //e
         assertEquals(112, answer[2][0]);    //p
         assertEquals(0, answer[3][0]);    
-        answer = generator.generateHistory(history, 1, 3, true);
+        answer = trie.generateHistory(history, 1, 3, true);
         assertEquals(0, answer[0][0]);    
     }
     
     @Test
     public void generateHistoryDoesntChangeOkEnding() {
         trie.insert("seppi");
-        int[][] answer = generator.generateHistory(history, 2, 5, true);
+        int[][] answer = trie.generateHistory(history, 2, 5, true);
         assertEquals(112, answer[3][0]);    //p
         assertEquals(111, answer[4][0]);    //o
         assertEquals(0, answer[5][0]);    
@@ -68,7 +68,7 @@ public class TestGenerator {
         t[1][1] = 97;
         t[3][1] = -1;
         t[4][1] = -1;
-        int[][] answer = generator.changeHistory(t, 4);
+        int[][] answer = trie.changeHistory(t, 4);
         assertEquals(97, answer[0][0]);
         assertEquals(97, answer[1][0]);
         assertEquals(0, answer[2][0]);

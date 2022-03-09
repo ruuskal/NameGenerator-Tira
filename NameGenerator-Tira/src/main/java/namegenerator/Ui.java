@@ -1,16 +1,16 @@
 package namegenerator;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 
 public class Ui {
     
     public void start(Scanner s) {
         Loader l = new Loader();
-        
+            
         Trie lasts = l.loadNames("/lastnames.txt");
+
+       
         Trie females = l.loadNames("/femaleNames.txt");
         Trie males = l.loadNames("/maleNames.txt");
         
@@ -37,8 +37,8 @@ public class Ui {
                 String letter = s.next().toLowerCase();
                 
                 if (letter.charAt(0) < 97 || letter.charAt(0) > 256) {
-                    System.out.println("That's not a valid letter, we'll use 'z'.\n");
-                    letter = "z";
+                    System.out.println("That's not a valid letter, we'll use 'q'.\n");
+                    letter = "q";
                 } else {
                     System.out.println("OK\n");
                 }
