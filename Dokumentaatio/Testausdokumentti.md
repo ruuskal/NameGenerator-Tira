@@ -4,9 +4,11 @@ Yksikkötestaamista
  seurataan JaCoCon avulla. On pyritty testaamaan sellaisia tilanteita, jotka
  potentiaalisesti voisivat kaataa ohjelman (kuten nullpointterit). Lisäksi on
  pyritty varmistamaan, että generoidut nimet ovat sen hetken sääntöjen
- mukaisia. Luokat `UI` ja `Loader` jätettiin testauksen ulkopuolelle.
+ mukaisia. Luokat `Main`, `UI` ja `Loader` jätettiin testauksen ulkopuolelle.
 
 ## Yksikkötestaus
+
+![testikattavuus](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/testikattavuus.png)
 
 Testit on laadittu noudattaen seuraavia sääntöjä:
 

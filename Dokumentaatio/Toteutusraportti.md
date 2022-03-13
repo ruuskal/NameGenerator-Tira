@@ -10,11 +10,10 @@ käyttäjä voi määritellä minkälaisia nimiä haluaa generoida
 nimen viimeisen kirjaimen olevan sellainen, joka opetusdatassakin esiintyy 
 viimeisenä kirjaimena. Ohjelma toimii komentoriviltä. 
 
-Trie-rakenne on toteutettu siten, että jokaisella solmulla N on K kokoinen 
+Trie-rakenne on toteutettu siten, että jokaisella solmulla N on K-kokoinen 
  array-lista integer-arvoja, jossa jokaisen lapsisolmun indeksi toimii sen
- avaimena. Trie vie tilaa O(N*K), eli tällä data-aineistolla N=57 690 ja
- K=256. Aineistossa on yhteensä 45 308 ei-uniikkia nimeä. Yksi integer vie 
-4 tavua, joten 57690*256*4 tavua = 59 074 560 tavua?
+ avaimena. Trie vie tilaa O(N x K), eli tällä data-aineistolla N=57 690 ja
+ K=256. Aineistossa on yhteensä 45 308 ei-uniikkia nimeä.
 
 ## Parannusehdotuksia
 
