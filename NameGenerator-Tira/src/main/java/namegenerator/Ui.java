@@ -8,9 +8,7 @@ public class Ui {
     public void start(Scanner s) {
         Loader l = new Loader();
             
-        Trie lasts = l.loadNames("/lastnames.txt");
-
-       
+        Trie lasts = l.loadNames("/lastnames.txt");       
         Trie females = l.loadNames("/femaleNames.txt");
         Trie males = l.loadNames("/maleNames.txt");
         

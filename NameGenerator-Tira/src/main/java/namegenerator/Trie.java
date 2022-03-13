@@ -1,8 +1,5 @@
 package namegenerator;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public class Trie {
     private TrieNode root;
     private int alphabetSize;
@@ -27,6 +24,7 @@ public class Trie {
      * @param name  
      */
     public void insert(String name) {
+        
         name = name.toLowerCase();
         if (name.length() < 2) {
             return;
@@ -48,7 +46,7 @@ public class Trie {
         }
         node.setEnd();
         name = name.substring(1);
-        insert(name);     
+        insert(name);
     }
     /**
     * Checks if given word is in the trie, finds also substrings of a word.
@@ -80,7 +78,6 @@ public class Trie {
     public int getMostPopularIndex(TrieNode node) {
         int mostPasses = 0;
         int mostPopularIndex = 0;
-        int[] populars = new int[100];
         try {
             TrieNode[] children = node.getChildren();
             for (int i = 0; i < this.alphabetSize; i++) {
@@ -92,15 +89,16 @@ public class Trie {
                     }  
                 }
             }
+     
         } catch (Exception e) {
-            System.out.println("Error??: " + e);
+            System.out.println("Error: " + e);
             return -1;
         }
         return mostPopularIndex;
     }
     
-    /** Finds nodes child, that is marked as ending node. Returns the first 
-     * index with such child, or -1 if there is no ending nodes as child
+    /** Finds nodes child that is marked as ending node. Returns the first 
+     * index with such child or -1 if there is no ending nodes as child
      * 
      * @param node parent node
      * @param popular most popular child node
@@ -123,7 +121,7 @@ public class Trie {
             }
             return idx;
         } catch (Exception e) {
-            System.out.println("Virhe: " + e);
+            System.out.println("Error: " + e);
             return -1;
         }
     }
@@ -167,11 +165,17 @@ public class Trie {
             int endingIdx  = getIdxForEnding(node, newIndex);
             history[knownLetters][1] = endingIdx;
             node = getRoot();
-            
         }
         return history;
     }
-        public int[][] changeHistory(int[][] history, int knownLetters) {
+    /**
+     * Finds node, that is marked as lastnode, starting from 
+     * end of the array
+     * @param history
+     * @param knownLetters index for last letter in history
+     * @return 
+     */
+    public int[][] changeHistory(int[][] history, int knownLetters) {
         for (int x = knownLetters - 1; x >= 0; x--) {
             if (history[x][1] > 0) {
                 history[x][0] = history[x][1];
@@ -181,5 +185,4 @@ public class Trie {
         }
         return history;
     }
-    
 }
