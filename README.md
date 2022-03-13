@@ -2,39 +2,23 @@
 
 NameGenerator on Tietorakenteet ja algoritmit -kurssin harjaoitussovellus. 
 Ohjelman on tarkoitus generoida valmiiksiannetusta nimi-aineistosta nimiä 
-Markovin ketjujen avulla. Sovellus on toteutettu Javalla ja Gradlella (4.4.1).
+Markovin ketjuja mukaillen. Sovellus on toteutettu Javalla ja Gradlella (4.4.1).
 
-## Viikkoraportit
-
-[Viikko 1](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti1.md) 
-
-[Viikko 2](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti2.md)
-
-[Viikko 3](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti3.md)
-
-[Viikko 4](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti4.md)
-
-[Viikko 5](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti5.md)
-
-[Viikko 6](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Viikkoraportti6.md)
-
-
-## Määrittelydokumentti
+## Dokumentointi
+[Viikkoraportit](https://github.com/ruuskal/NameGenerator-Tira/tree/main/Dokumentaatio)
 
 [Määrittelydokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/M%C3%A4%C3%A4rittelydokumentti.md)
 
-## Testausdokumentti 
-
 [Testausdokumentti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Testausdokumentti.md)
-
-## Toteutusraportti
 
 [Toteutusraportti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/Toteutusraportti.md)
 
+[Käyttöohje](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/K%C3%A4ytt%C3%B6ohje.md)
 ## JaCoCo ja Checkstyle
 
-Komennon `gradle build` jälkeen testikattavuusraportti löytyy polusta
- */build/jacocoHtml/index.html* ja Checkstylen raportti polusta */build/reports/checkstyle/main.html*
+Testiti saa ajettua komennolla `gradle test.` Testikattavuusraportti löytyy
+ polusta */build/jacocoHtml/index.html* ja Checkstylen raportti polusta
+ */build/reports/checkstyle/main.html*.
 
 ## Nimiaineisto
 

@@ -1,12 +1,10 @@
 # Testaus
 
-Tällä hetkellä projektissa on keskitytty vain yksikkötestaamiseen, jota
+Yksikkötestaamista
  seurataan JaCoCon avulla. On pyritty testaamaan sellaisia tilanteita, jotka
  potentiaalisesti voisivat kaataa ohjelman (nullpointterit). Lisäksi on
  pyritty varmistamaan, että generoidut nimet ovat sen hetken sääntöjen
- mukaisia. Säännöt muuttunevat vielä projektin edetessä (esimerkiksi
- generoitavan nimen lopetuksen ja aloituksen suhteen), joten testejä
- päivitetään aina toiminnallisuuden muuttuessa.
+ mukaisia.
 
 ## Yksikkötestaus
 
@@ -33,9 +31,15 @@ nimen generoiva metodi palauttaa niin pitkän merkkijonon, kuin se löytää.
 ![raportti](https://github.com/ruuskal/NameGenerator-Tira/blob/main/Dokumentaatio/jacocoreport.pdf)
 
 ## Suorituskykytestaus
+Trie-rakenteeseen tallentamisen nopeutta testattiin tallentamalla 
+tiedosto "lastnames" triehen kymmenen kertaa. Tulokseksi saatiin: 
+(169+170+164+177+166+192+165+159+158+160)/10 = 168 ms. Tämä on aika odotettu 
+tulos. 
 
-Tiedosto lastnames tallentaminen puuhun kymmenen kertaa antoi tulokseksi: 
-(169+170+164+177+166+192+165+159+158+160)/10 = 168 ms.
+Koko ohjelman suorituskykyä testattiin kutsumalla metodia `generateName()` 
+sata kertaa silmukan sisällä. Metodikutsun parametreilla ei vaikuttanut 
+olevan yhteyttä metodin tehokkuuteen. Ensimmäisen nimen luomisesa kesti noin
+ x sekuntia ja muiden nimien luominen q sekuntia. 
 Nimen luomisessa kesti noin 25-40 millisekuntia riippumatta ketjun asteesta
  tai muista parametreistä. 
 
